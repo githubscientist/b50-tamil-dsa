@@ -336,11 +336,146 @@
 
     Solution:
 
+    Outerloop: number of executions = n / 2
+
     Method 2: Substitution Method
 
     a. Assume some values for N
+
+    N = 10
+    N = 20
+    N = 29
+    N = 30
+    N = 31
+    N = 40
+
     b. Substitute the value and find the number of executions for all the assumed values of N
+
+    N = 10; j = 2, 4, 8 => 3 executions
+    N = 20; j = 2, 4, 8, 16 => 4 executions
+    N = 29; j = 2, 4, 8, 16 => 4 executions
+    N = 30; j = 2, 4, 8, 16 => 4 executions
+    N = 31; j = 2, 4, 8, 16 => 4 executions
+    N = 40; j = 2, 4, 8, 16, 32 => 5 executions
+
     c. Find the pattern and Generalize it
+
+    number of executions = the number that is raised to the power of 2 which is less than or equal to N or approximately equal to N
+
+    2^X = N, Find the value of X?
+
+    Applying log base 2 on both sides
+
+    log2(2^X) = log2(N)
+    X log2(2) = log2(N) [since, loga(a^b) = b * loga(a)]
+    X = log2(N) [since, loga(a) = 1]
+
     d. Calculate the time complexity, T(N)
 
+    T(N) = 1 + n/2 * log2(N)
+         = n/2 * log2(N) (Ignoring 1 as it is a constant)
+         = O(n log N)
+
+*/
+
+// test the expression
+
+// console.log(`For N = ${10}, number of executions = ${Math.floor(Math.log2(10))}`);
+// console.log(`For N = ${20}, number of executions = ${Math.floor(Math.log2(20))}`);
+// console.log(`For N = ${29}, number of executions = ${Math.floor(Math.log2(29))}`);
+// console.log(`For N = ${30}, number of executions = ${Math.floor(Math.log2(30))}`);
+// console.log(`For N = ${31}, number of executions = ${Math.floor(Math.log2(31))}`);
+// console.log(`For N = ${40}, number of executions = ${Math.floor(Math.log2(40))}`);
+
+/*
+    Example: 6
+
+    O(2^n)
+
+    Problem: Print all the subsets of a given set.
+
+    Input: [1, 2, 3]
+
+    Output: 
+
+    select 0 elements: []
+    select 1 elements: [1], [2], [3]
+    select 2 elements: [1, 2], [1, 3], [2, 3]
+    select 3 elements: [1, 2, 3]
+
+    For n = 3, number of subsets = 2^3 = 8
+
+    Input: [1, 2, 3, 4]
+
+    Output:
+
+    select 0 elements: []
+    select 1 elements: [1], [2], [3], [4]
+    select 2 elements: [1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]
+    select 3 elements: [1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4]
+    select 4 elements: [1, 2, 3, 4]
+
+    For n = 4, number of subsets = 2^4 = 16
+
+    n = 3, number of executions = 8
+    n = 4, number of executions = 16
+    n = 5, number of executions = 32
+
+    number of executions = 2^n
+
+    Time Complexity: O(2^n)
+*/
+
+/*
+    O(n!)
+
+    Problem: Print all the permutations of a given string.
+
+    Input: "abc"
+
+    Output:
+
+    abc
+    acb
+    bac
+    bca
+    cab
+    cba
+
+    For n = 3, number of permutations = 3! = 6
+
+    Input: "abcd"
+
+    Output:
+
+    abcd
+    abdc
+    acbd
+    acdb
+    adbc
+    adcb
+    bacd
+    badc
+    bcad
+    bcda
+    bdac
+    bdca
+    cabd
+    cadb
+    cbad
+    cbda
+    cdab
+    cdba
+    dabc
+    dacb
+    dbac
+    dbca
+    dcab
+    dcba
+
+    For n = 4, number of permutations = 4! = 24
+
+    number of executions = n!
+
+    Time Complexity: O(n!)
 */
