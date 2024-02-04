@@ -140,6 +140,36 @@ class LinkedList {
             }
         }
     }
+
+    findLength() {
+        let nodes = 0;
+        let thead = this.head;
+        while (thead != null) {
+            nodes++;
+            thead = thead.next;
+        }
+        return nodes;
+    }
+
+    insertAtPos(index, value) {
+        let length = this.findLength();
+        if (length >= index) {
+            // proceed with the insertion
+            if (index == 0) {
+                this.insertAtHead(value);
+            } else if (index == length) {
+                this.insertAtTail(value);
+            } else {
+                let thead = this.head;
+                for (let i = 0; i < index - 1; i++){
+                    thead = thead.next;
+                }
+                let newNode = new Node(value);
+                newNode.next = thead.next;
+                thead.next = newNode;
+            }
+        }
+    }
 }
 
 let list = new LinkedList();
@@ -152,7 +182,12 @@ list.insertAtTail(4);
 // list.deleteAtTail();
 // list.deleteAtTail();
 
-list.deleteAtHead();list.deleteAtHead();
+// list.deleteAtHead();list.deleteAtHead();
+
+list.insertAtPos(2, 6);
+list.insertAtPos(0, 10);
+list.insertAtPos(5, 12);
+list.insertAtPos(2, 15);
 
 console.log(list.toArray());
 
